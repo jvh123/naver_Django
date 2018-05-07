@@ -1,0 +1,2 @@
+sql Äõ¸®¹® 
+dataset=select data1.ID,data1.BIZ_UNIT,data1.PD_S_C,BUY_CT,data3.PD_H_NM,data3.PD_M_NM,data3.PD_S_NM from data1 join data3 on data1.BIZ_UNIT=data3.BIZ_UNIT and data1.PD_S_C=data3.PD_S_C
