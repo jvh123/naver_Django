@@ -1,0 +1,59 @@
+{% extends 'samsung_laundry/main.html' %}
+{% load static %}
+{% block In_Page%}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Data Table Example</div>
+    <form action="{% url 'samsung_laundry:search_id'%}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="start_date">start_date</label>
+            <input name='start_date' id="start_date" type="date" >
+        </p>
+        <p>
+            <label for="end_date">end_date</label>
+            <input name='end_date' id="end_date" type="date" >
+        </p>
+        <ul>
+        {% for ac in ac_if %}
+            <li>
+            <input type="radio" name="searchid" id="searchid{{ forloop.counter }}" value="{{ac.id}}"/>
+            <label for="searchid{{ forloop.counter }}">{{ac.C_NAME}}</label><br />
+            </li>
+                {%endfor%}
+        </ul>
+        <input type="submit" value="search" />
+    </form>
+<p>{{no_data}}</p>
+<p>{{start_date}}</p>
+<p>{{end_date}}</p>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>품목</th>
+            <th>수량</th>
+            <th>단가</th>
+            <th>공급단가</th>
+        </tr>
+        <ul>
+            {% for deal in deal_IF %}
+            <tr>
+                <td>{{deal.ITEM_ID}}</td>
+                <td>{{deal.BUY_CT}}</td>
+                <td>{{deal.BUY_AM}}</td>
+                <td>{{deal.BUY_AM}}</td>
+            </tr>
+            {%endfor%}
+        </ul>
+    </thead>
+</table>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
